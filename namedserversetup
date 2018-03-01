@@ -6,13 +6,24 @@ echo "Please ensure that you are a sudoer or root user before continuing!"
 sleep 1
 read -p "Press Enter to continue"
 
+#Ask for variables here
+
+echo "Please input your initials"
+read initials
+
+echo "Please input your client machine IP"
+read clientip
+
+echo "Please input your named/bind server machine IP"
+read serverip
+
+echo "
 
 
-#First we start with the basics, installation and whatnot.
 
+#Now we start with the installation and whatnot.
 
-#Start with yum install bind bindutils -y
-
+yum install bind bindutils -y
 
 
 #Start and enable named services using systemctl
