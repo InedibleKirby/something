@@ -17,6 +17,9 @@ read clientip
 echo "Please input your named/bind server machine IP"
 read serverip
 
+echo "Please input your default gateway"
+read defaultgateway
+
 echo "Please input your desired zone name"
 read zonename
 
@@ -26,6 +29,7 @@ echo "You have entered the following information:
 echo "Initials are: $initials"
 echo "Client IP is: $clientip"
 echo "Server IP is: $serverip"
+echo "Default gateway is $defaultgateway"
 echo "Zone name is: $zonename"
 echo ""
 echo "If everything above is correct, press Enter. If not, CTRL+C out and start again"
@@ -75,10 +79,14 @@ allow-update { none; };
 
 #now we create our zone files in /var/named/
 #vi /var/named/forward.placeholder.db
+sed 's/initials/$initials' ./forward.placeholder.db > /var/named/forward.$zonename.db
+sed 's/clientip/$clientip' /var/named/forward.$zonename.db
+
 #vi /var/named/1.168.192.db - reverse lookup zone
-
-
-#NOTE: IF we can create premade zone files with small inserts, we can avoid checking zone files, seeing as they'd be prebuilt and pre-tested
+sed 's/initials/$initials' ./1.168.192.db > /var/named/1.168.192.db
+sed 's/clientip/$clientip' /var/named/1.168.192.db
+sed 's/serverip/$serverip' /var/named/1.168.192.db
+sed 's/defaultgateway/$defaultgateway' /var/named/1.168.192.db
 
 
 
