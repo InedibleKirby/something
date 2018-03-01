@@ -38,18 +38,20 @@ echo "Beginning installation of bind and bindutils"
 sleep 1
 yum install bind bindutils -y
 
-
+echo "Starting, enabling, and checking status of process"
+sleep 1
 #Start and enable named services using systemctl
-#status to make sure we're up and running
-
-
+systemctl start named
+systemctl enable named
+#Status to make sure we're up and running
+systemctl status named
 
 
 #vi /etc/named.conf setup
 #Copy original
+cp /etc/named.conf /etc/named.conf.bak
+
 #consider setting up a premade file to push through a named.conf rather than appending or printing
-
-
 
 
 #forward and reverse lookup zones must be referenced here
@@ -81,9 +83,7 @@ allow-update { none; };
 
 
 #now we restart bind server
-#systemctl restart named.service
-
-
+systemctl restart named.service
 
 
 
