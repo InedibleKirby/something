@@ -1,5 +1,5 @@
 $TTL 1D
-@             IN      SOA       NOS220-CENTOS-**.example.local.  sysadmin.example.local.  (
+@             IN      SOA       NOS220-CENTOS-initials.example.local.  sysadmin.example.local.  (
 
                                  12             ; Serial
                                  8H             ; Refresh
@@ -7,11 +7,11 @@ $TTL 1D
                                  4W             ; Expire
                                  1D )           ; Minimum
 ;
-                IN      NS       NOS220-CENTOS-**          ; Name Server for the domain
-                IN      MX  10   NOS220-CENTOS-**          ; Mail Exchange
+                IN      NS       NOS220-CENTOS-initials          ; Name Server for the domain
+                IN      MX  10   NOS220-CENTOS-initials          ; Mail Exchange
 ;
-example.local.          IN      A        192.168.19.***     ; IP address for the domain 'example.local'
-NOS220-CENTOS-**        IN      A        192.168.19.***     ; IP address for 'NOS220-CENTOS-**'
+example.local.          IN      A        192.168.19.clientip     ; IP address for the domain 'example.local'
+NOS220-CENTOS-initials        IN      A        192.168.19.clientip     ; IP address for 'NOS220-CENTOS-initials'
 
 
 gateway                 IN      A         192.168.16.1      ; ip address of the default gateway
