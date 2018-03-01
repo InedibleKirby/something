@@ -17,7 +17,19 @@ read clientip
 echo "Please input your named/bind server machine IP"
 read serverip
 
-echo "
+echo "Please input your desired zone name"
+read zonename
+
+clear
+
+echo "You have entered the following information:
+echo "$initials"
+echo "$clientip"
+echo "$serverip"
+echo "$zonename"
+echo ""
+echo "If everything above is correct, press Enter. If not, CTRL+C out and start again"
+read -p "Press Enter to continue"
 
 
 
