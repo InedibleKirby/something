@@ -1,0 +1,68 @@
+#!bin/bash
+#This will be a basic markup of a named/bind server setup on a system
+#I may create a version of this to be a slave as well, tbd
+
+echo "Please ensure that you are a sudoer or root user before continuing!"
+sleep 1
+read -p "Press Enter to continue"
+
+
+
+#First we start with the basics, installation and whatnot.
+
+
+#Start with yum install bind bindutils -y
+
+
+
+#Start and enable named services using systemctl
+#status to make sure we're up and running
+
+
+
+
+#vi /etc/named.conf setup
+#Copy original? Comment out listen-*?
+#consider setting up a premade file to push through a named.conf rather than appending or printing
+
+
+
+
+#forward and reverse lookup zones must be referenced here
+
+#forward
+zone "placeholder.local" IN {
+type master;
+file "forward.placeholder.db";
+allow-update { none; };
+};
+
+#reverse
+zone "1.168.192.in-addr.arpa" IN {
+type master;
+file "1.168.192.db";
+allow-update { none; };
+};
+
+
+
+
+#now we create our zone files in /var/named/
+#vi /var/named/forward.placeholder.db
+#vi /var/named/1.168.192.db - reverse lookup zone
+
+
+#NOTE: IF we can create premade zone files with small inserts, we can avoid checking zone files, seeing as they'd be prebuilt and pre-tested
+
+
+
+#now we restart bind server
+#systemctl restart named.service
+
+
+
+
+
+#at this point we can set nameserver in client /etc/resolv.conf
+
+#Test using dig command
