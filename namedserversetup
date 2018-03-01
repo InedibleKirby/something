@@ -8,7 +8,7 @@ read -p "Press Enter to continue"
 
 #Ask for variables here
 
-echo "Please input your initials"
+echo "Please input your first and last initials"
 read initials
 
 echo "Please input your client machine IP"
@@ -34,6 +34,7 @@ echo "Zone name is: $zonename"
 echo ""
 echo "If everything above is correct, press Enter. If not, CTRL+C out and start again"
 read -p "Press Enter to continue"
+
 
 
 
