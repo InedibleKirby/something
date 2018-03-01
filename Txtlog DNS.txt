@@ -1,0 +1,262 @@
+[root@nos220-centos-wm etc]# vi named.conf
+        file "named.ca";
+};
+zone "example.local" IN {
+
+                        type master;
+                        file "/var/named/master-example.local";
+
+                        };
+
+# vi /etc/named.conf
+
+
+        zone "19.168.192.in-addr.arpa" IN {
+                type master;
+                file "/var/named/reverse-192.168.19";
+                 allow-update { none; };
+         };
+
+
+
+include "/etc/named.rfc1912.zones";
+include "/etc/named.root.key";
+
+
+
+$TTL 1D
+@             IN      SOA       NOS220-CENTOS-WM.example.local.  sysadmin.example.local.  (
+
+                                 12             ; Serial
+                                 8H             ; Refresh
+                                 2H             ; Retry
+                                4W             ; Expire
+                                 1D )           ; Minimum
+;
+                IN      NS       NOS220-CENTOS-WM          ; Name Server for the domain
+                IN      MX  10   NOS220-CENTOS-WM          ; Mail Exchange
+;
+example.local.          IN      A        192.168.19.141     ; IP address for the domain 'example.local'
+NOS220-CENTOS-WM        IN      A        192.168.19.141     ; IP address for 'NOS220-CENTOS-WM'
+
+
+gateway                 IN      A         192.168.16.1      ; ip address of the default gateway
+
+[root@nos220-centos-wm named]# vi reverse-192.168.19
+$TTL 1D
+@             IN      SOA       nos220-centos-wm.example.local.  sysadmin.example.local.  (
+                                 12             ; Serial
+                                 8H             ; Refresh
+                                 2H             ; Retry
+                                 4W             ; Expire
+                                 1D )           ; Minimum
+;
+               IN      NS        nos220-centos-wm.example.local.
+141            IN      PTR       nos220-centos-wm.example.local.
+
+151            IN      PTR       nos220-fedora-wm.example.local.
+
+1              IN      PTR       gateway.example.local.
+;
+~
+
+
+
+Decide a domain name we want to use
+
+set inside of config file
+
+create another forward and reverse lookup zone.
+
+you cannot just modify master.example
+
+have this done by next monday.
+
+
+is this live
+its like slac for code writing
+
+Any chance you could copy paste a script you write Monday here so I can take a look at what y'all did?
+
+
+Write a script to create to create a file with a specified file size in to a specific directory?
+ 
+Write a script the will scan a IP address using nmap to see it the host is up.
+ 
+Write a script to accept variable, perform a task, then provide a formatted output.
+scripts to come
+!bin/bash
+
+
+#this is an attempt to do my fist if else statment as well.
+
+
+
+#prompt user to scan whole network or a specific ip
+
+echo "Please input an Ip address to test to see if they are up"
+echo "XXX.XXX.XXX.XXX/X"
+
+read ipadd
+
+nmap $ipadd -A  >> ~/nmap_scans
+
+tail ~/nmap_scans
+
+
+
+
+#!bin/bash
+
+
+#prompt user for what size of file
+
+echo "This script is to create a file of a specified size!!!"
+echo "1st, lets decide how big you want the file to be, first select size, then unit."
+read fisize
+
+#prompt for KB, MB, GB
+echo "Would you like your file size to be in KB, MB, or GB?"
+read suffix
+
+
+#prompt user for size of file
+echo "Ok, your file will be $fisize $suffix in size!"
+
+#promp user for finame
+echo "Now, your file will be stored in the path, filname you input (ex. ~/etc/targetdirectory/targetfilename) "
+read finame
+
+
+
+#create file of specified size in specified path
+
+echo "creating a file of random gyberish in" $finame "of size" $fisize" bytes"
+
+
+dd if=/dev/zero of=$finame bs=$fisize$suffix count=1
+
+#prove file was created.
+
+ls -lh $path
+
+
+
+
+
+
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=140826
+
+[root@nos220-centos-wm named]# cat reverse-192.168.19
+$TTL 1D
+@             IN      SOA       nos220-centos-wm.example.local.  sysadmin.example.local.  (
+                                 12             ; Serial
+                                 8H             ; Refresh
+                                 2H             ; Retry
+                                 4W             ; Expire
+                                 1D )           ; Minimum
+;
+               IN      NS        nos220-centos-wm.example.local.
+141            IN      PTR       nos220-centos-wm.example.local.
+
+151            IN      PTR       nos220-fedora-wm.example.local.
+
+1              IN      PTR       gateway.example.local.
+;
+
+
+
+
+is this live
+its like slac for code writing
+
+Any chance you could copy paste a script you write Monday here so I can take a look at what y'all did?
+
+
+Write a script to create to create a file with a specified file size in to a specific directory?
+ 
+Write a script the will scan a IP address using nmap to see it the host is up.
+ 
+Write a script to accept variable, perform a task, then provide a formatted output.
+scripts to come
+!bin/bash
+
+
+#this is an attempt to do my fist if else statment as well.
+
+
+
+#prompt user to scan whole network or a specific ip
+
+echo "Please input an Ip address to test to see if they are up"
+echo "XXX.XXX.XXX.XXX/X"
+
+read ipadd
+
+nmap $ipadd -A  >> ~/nmap_scans
+
+tail ~/nmap_scans
+
+
+
+
+#!bin/bash
+
+
+#prompt user for what size of file
+
+echo "This script is to create a file of a specified size!!!"
+echo "1st, lets decide how big you want the file to be, first select size, then unit."
+read fisize
+
+#prompt for KB, MB, GB
+echo "Would you like your file size to be in KB, MB, or GB?"
+read suffix
+
+
+#prompt user for size of file
+echo "Ok, your file will be $fisize $suffix in size!"
+
+#promp user for finame
+echo "Now, your file will be stored in the path, filname you input (ex. ~/etc/targetdirectory/targetfilename) "
+read finame
+
+
+
+#create file of specified size in specified path
+
+echo "creating a file of random gyberish in" $finame "of size" $fisize" bytes"
+
+
+dd if=/dev/zero of=$finame bs=$fisize$suffix count=1
+
+#prove file was created.
+
+ls -lh $path
+
+
+
+
+
+
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=140826
+
+[root@nos220-centos-wm named]# cat reverse-192.168.19
+$TTL 1D
+@             IN      SOA       nos220-centos-wm.example.local.  sysadmin.example.local.  (
+                                 12             ; Serial
+                                 8H             ; Refresh
+                                 2H             ; Retry
+                                 4W             ; Expire
+                                 1D )           ; Minimum
+;
+               IN      NS        nos220-centos-wm.example.local.
+141            IN      PTR       nos220-centos-wm.example.local.
+
+151            IN      PTR       nos220-fedora-wm.example.local.
+
+1              IN      PTR       gateway.example.local.
+;
+
