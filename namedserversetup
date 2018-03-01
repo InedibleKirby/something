@@ -16,9 +16,11 @@ read initials
 
 echo "Please input your client machine IP"
 read clientip
+cip="{$clientip##*.}"
 
 echo "Please input your named/bind server machine IP"
 read serverip
+sip="{$serverip##*.}"
 
 echo "Please input your default gateway"
 read defaultgateway
@@ -88,8 +90,8 @@ sed 's/clientip/$clientip' /var/named/forward.$zonename.db
 
 #vi /var/named/1.168.192.db - reverse lookup zone
 sed 's/initials/$initials' ./1.168.192.db > /var/named/1.168.192.db
-sed 's/clientip/$clientip' /var/named/1.168.192.db
-sed 's/serverip/$serverip' /var/named/1.168.192.db
+sed 's/clientip/$cip' /var/named/1.168.192.db
+sed 's/serverip/$sip' /var/named/1.168.192.db
 sed 's/defaultgateway/$defaultgateway' /var/named/1.168.192.db
 
 
