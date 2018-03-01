@@ -34,7 +34,8 @@ read -p "Press Enter to continue"
 
 
 #Now we start with the installation and whatnot.
-
+echo "Beginning installation of bind and bindutils"
+sleep 1
 yum install bind bindutils -y
 
 
@@ -45,7 +46,7 @@ yum install bind bindutils -y
 
 
 #vi /etc/named.conf setup
-#Copy original? Comment out listen-*?
+#Copy original
 #consider setting up a premade file to push through a named.conf rather than appending or printing
 
 
@@ -54,9 +55,9 @@ yum install bind bindutils -y
 #forward and reverse lookup zones must be referenced here
 
 #forward
-zone "placeholder.local" IN {
+zone "$zonename.local" IN {
 type master;
-file "forward.placeholder.db";
+file "forward.$zonename.db";
 allow-update { none; };
 };
 
