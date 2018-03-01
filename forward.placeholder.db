@@ -1,0 +1,18 @@
+$TTL 1D
+@             IN      SOA       NOS220-CENTOS-**.example.local.  sysadmin.example.local.  (
+
+                                 12             ; Serial
+                                 8H             ; Refresh
+                                 2H             ; Retry
+                                 4W             ; Expire
+                                 1D )           ; Minimum
+;
+                IN      NS       NOS220-CENTOS-**          ; Name Server for the domain
+                IN      MX  10   NOS220-CENTOS-**          ; Mail Exchange
+;
+example.local.          IN      A        192.168.19.***     ; IP address for the domain 'example.local'
+NOS220-CENTOS-**        IN      A        192.168.19.***     ; IP address for 'NOS220-CENTOS-**'
+
+
+gateway                 IN      A         192.168.16.1      ; ip address of the default gateway
+;
