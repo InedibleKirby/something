@@ -16,11 +16,11 @@ read initials
 
 echo "Please input your client machine IP"
 read clientip
-cip="{$clientip##*.}"
+cip=`echo "$clientip" | sed 's/^.*\.\([^.]*\)$/\1/'`
 
 echo "Please input your named/bind server machine IP"
 read serverip
-sip="{$serverip##*.}"
+sip=`echo "$serverip" | sed 's/^.*\.\([^.]*\)$/\1/'`
 
 echo "Please input your default gateway"
 read defaultgateway
