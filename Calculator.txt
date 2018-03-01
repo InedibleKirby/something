@@ -37,3 +37,5 @@ echo ""
 echo "$final is your final answer"
 read -p "Press Enter when done"
 clear
+
+#This is a big ol test script here.
