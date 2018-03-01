@@ -2,6 +2,9 @@
 #This will be a basic markup of a named/bind server setup on a system
 #I may create a version of this to be a slave as well, tbd
 
+echo "WARNING: DO NOT RUN THIS SCRIPT WITHOUT A VALID STATIC IP SET"
+echo ""
+sleep 1
 echo "Please ensure that you are a sudoer or root user before continuing!"
 sleep 1
 read -p "Press Enter to continue"
