@@ -25,8 +25,11 @@ elif [ "$option" = "4" ]; then
 else
         echo "Please choose a valid operator";sleep 2
 fi
-
 done
+
+A BUNCH OF STUFF
+
+for me to change the file
 
 clear
 echo "$num1 is the first number you entered"
