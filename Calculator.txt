@@ -1,0 +1,39 @@
+#!/bin/bash
+# input from commandline
+clear
+echo -n "Please input your first number "
+read num1
+echo -n "Please input your second number "
+read num2
+
+while true; do
+
+echo "What would you like to do?"
+echo "1) Add"
+echo "2) Subtract"
+echo "3) Multiply"
+echo "4) Divide"
+read option
+if [ "$option" = "1" ]; then
+        final=$(($num1+$num2));break
+elif [ "$option" = "2" ]; then
+        final=$(($num1-$num2));break
+elif [ "$option" = "3" ]; then
+        final=$(($num1*$num2));break
+elif [ "$option" = "4" ]; then
+        final=$(($num1/num2));break
+else
+        echo "Please choose a valid operator";sleep 2
+fi
+
+done
+
+clear
+echo "$num1 is the first number you entered"
+sleep 1
+echo "$num2 is the second number you entered"
+sleep 1
+echo ""
+echo "$final is your final answer"
+read -p "Press Enter when done"
+clear
