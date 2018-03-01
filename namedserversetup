@@ -37,7 +37,8 @@ echo "Server IP is: $serverip"
 echo "Default gateway is $defaultgateway"
 echo "Zone name is: $zonename"
 echo ""
-echo "If everything above is correct, press Enter. If not, CTRL+C out and start again"
+echo "If everything above is correct, press Enter. If not, CTRL+C out and start the script again"
+sleep 2
 read -p "Press Enter to continue"
 
 
