@@ -14,5 +14,5 @@ example.local.          IN      A        clientip     ; IP address for the domai
 NOS220-CENTOS-initials        IN      A        clientip     ; IP address for 'NOS220-CENTOS-initials'
 
 
-gateway                 IN      A         192.168.16.1      ; ip address of the default gateway
+gateway                 IN      A         defaultgateway      ; ip address of the default gateway
 ;
