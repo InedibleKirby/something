@@ -64,8 +64,8 @@ cp /etc/named.conf /etc/named.conf.bak
 
 #set up a premade file to push through a named.conf rather than appending or printing
 
-cat ./masternamed.conf > /etc/named.conf
-
+cp ./masternamed.conf > /etc/masternamed.conf
+echo "include "/etc/masternamed.conf";" >> /etc/named.conf
 
 
 #now we create our zone files in /var/named/
