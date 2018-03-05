@@ -68,6 +68,12 @@ cp /etc/named.conf /etc/named.conf.bak
 #forward and reverse lookup zones must be referenced here
 
 echo "
+options { 
+        directory "/var/named"; 
+        forwarders { 10.0.0.1; };
+        notify no;
+};
+
 #forward
 zone "$zonename.local" IN {
 type master;
