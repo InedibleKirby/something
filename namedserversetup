@@ -86,6 +86,12 @@ systemctl restart named.service
 
 
 
-#at this point we can set nameserver in client /etc/resolv.conf
+#set nameserver in client /etc/resolv.conf
 
 #Test using dig command
+
+dig www.google.com
+
+echo "Thank you for using my script!"
+sleep 3
+clear
