@@ -62,32 +62,9 @@ systemctl status named
 #Copy original
 cp /etc/named.conf /etc/named.conf.bak
 
-#consider setting up a premade file to push through a named.conf rather than appending or printing
+#set up a premade file to push through a named.conf rather than appending or printing
 
-
-#forward and reverse lookup zones must be referenced here
-
-echo "
-options { 
-        directory "/var/named"; 
-        forwarders { 10.0.0.1; };
-        notify no;
-};
-
-#forward
-zone "$zonename.local" IN {
-type master;
-file "forward.$zonename.db";
-allow-update { none; };
-};
-
-#reverse
-zone "1.168.192.in-addr.arpa" IN {
-type master;
-file "1.168.192.db";
-allow-update { none; };
-};
-" >> /etc/named.conf
+cat ./masternamed.conf > /etc/named.conf
 
 
 
