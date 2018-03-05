@@ -89,7 +89,7 @@ allow-update { none; };
 sed 's/initials/$initials' ./forward.placeholder.db > /var/named/forward.$zonename.db
 sed 's/clientip/$clientip' /var/named/forward.$zonename.db
 
-#Make changes to and copy over /var/named/1.168.192.db - reverse lookup zone
+#Make copy over and make changes to /var/named/1.168.192.db - reverse lookup zone
 sed 's/initials/$initials' ./1.168.192.db > /var/named/1.168.192.db
 sed 's/clientip/$cip' /var/named/1.168.192.db
 sed 's/serverip/$sip' /var/named/1.168.192.db
