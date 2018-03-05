@@ -67,6 +67,7 @@ cp /etc/named.conf /etc/named.conf.bak
 
 #forward and reverse lookup zones must be referenced here
 
+{
 #forward
 zone "$zonename.local" IN {
 type master;
@@ -80,7 +81,7 @@ type master;
 file "1.168.192.db";
 allow-update { none; };
 };
-
+} >> /etc/named.conf
 
 
 
