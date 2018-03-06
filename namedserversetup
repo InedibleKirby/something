@@ -73,13 +73,14 @@ sed -i "s/zonename/$zonename/g" /etc/masternamed.conf
 #now we create our zone files in /var/named/
 #Make changes to and copy over /var/named/forward.placeholder.db - forward lookup zone
 echo "Copying and inserting info into forward.$zonename.db"
-sleep 1
+sleep 2
 cp -R -u -p forward.placeholder.db "/var/named/forward.$zonename.db"
 sed -i "s/initials/$initials/g" "/var/named/forward.$zonename.db"
 sed -i "s/clientip/$clientip/g" "/var/named/forward.$zonename.db"
 
 #Make copy over and make changes to /var/named/1.168.192.db - reverse lookup zone
 echo "Copying and inserting info into 1.168.192.db"
+sleep 2
 cp -R -u -p 1.168.192.db /var/named/1.168.192.db
 sed -i "s/initials/$initials/g" /var/named/1.168.192.db
 sed -i "s/clientip/$cip/g" /var/named/1.168.192.db
