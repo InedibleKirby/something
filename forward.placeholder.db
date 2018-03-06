@@ -10,8 +10,8 @@ $TTL 1D
                 IN      NS       NOS220-CENTOS-initials          ; Name Server for the domain
                 IN      MX  10   NOS220-CENTOS-initials          ; Mail Exchange
 ;
-example.local.          IN      A        clientip     ; IP address for the domain 'example.local'
-NOS220-CENTOS-initials        IN      A        clientip     ; IP address for 'NOS220-CENTOS-initials'
+example.local.          IN      A        serverip     ; IP address for the domain 'example.local'
+NOS220-CENTOS-initials        IN      A        serverip     ; IP address for 'NOS220-CENTOS-initials'
 
 
 gateway                 IN      A         defaultgateway      ; ip address of the default gateway
