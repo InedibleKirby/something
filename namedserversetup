@@ -48,7 +48,7 @@ read -p "Press Enter to continue"
 #Now we start with the installation and whatnot.
 echo "Beginning installation of bind and bindutils"
 sleep 3
-yum install bind bindutils -y
+yum install bind bind-utils -y
 
 echo "Starting, enabling, and checking status of process"
 sleep 3
