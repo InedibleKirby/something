@@ -74,16 +74,16 @@ echo 'include "/etc/masternamed.conf";' >> /etc/named.conf
 echo "Copying and inserting info into forward.$zonename.db"
 sleep 1
 cp forward.placeholder.db "/var/named/forward.$namezone.db"
-sed 's/initials/$initials/g' "/var/named/forward.$zonename.db"
-sed 's/clientip/$clientip/g' "/var/named/forward.$zonename.db"
+sed "s/initials/$initials/g" "/var/named/forward.$zonename.db"
+sed "s/clientip/$clientip/g" "/var/named/forward.$zonename.db"
 
 #Make copy over and make changes to /var/named/1.168.192.db - reverse lookup zone
 echo "Copying and inserting info into 1.168.192.db"
 cp 1.168.192.db /var/named/1.168.192.db
-sed 's/initials/$initials/g' /var/named/1.168.192.db
-sed 's/clientip/$cip/g' /var/named/1.168.192.db
-sed 's/serverip/$sip/g' /var/named/1.168.192.db
-sed 's/defaultgateway/$defaultgateway/g' /var/named/1.168.192.db
+sed "s/initials/$initials/g" /var/named/1.168.192.db
+sed "s/clientip/$cip/g" /var/named/1.168.192.db
+sed "s/serverip/$sip/g" /var/named/1.168.192.db
+sed "s/defaultgateway/$defaultgateway/g" /var/named/1.168.192.db
 
 
 
