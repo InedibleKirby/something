@@ -47,11 +47,11 @@ read -p "Press Enter to continue"
 
 #Now we start with the installation and whatnot.
 echo "Beginning installation of bind and bindutils"
-sleep 1
+sleep 3
 yum install bind bindutils -y
 
 echo "Starting, enabling, and checking status of process"
-sleep 1
+sleep 3
 #Start and enable named services using systemctl
 systemctl start named
 systemctl enable named
@@ -92,9 +92,9 @@ systemctl restart named.service
 #Test using dig command
 
 dig www.google.com
-sleep 2
+sleep 5
 clear
 
 echo "Thank you for using my script!"
-sleep 3
+sleep 10
 clear
