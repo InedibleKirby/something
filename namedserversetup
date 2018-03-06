@@ -31,7 +31,7 @@ read zonename
 
 clear
 
-echo "You have entered the following information:
+echo "You have entered the following information:"
 echo "Initials are: $initials"
 echo "Client IP is: $clientip"
 echo "Server IP is: $serverip"
