@@ -67,6 +67,7 @@ cp /etc/named.conf /etc/named.conf.bak
 
 cp masternamed.conf /etc/masternamed.conf
 echo 'include "/etc/masternamed.conf";' >> /etc/named.conf
+sed -i "s/zonename/$zonename/g" /etc/masternamed.conf
 
 
 #now we create our zone files in /var/named/
