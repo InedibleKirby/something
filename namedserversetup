@@ -65,19 +65,19 @@ cp /etc/named.conf /etc/named.conf.bak
 
 #set up a premade file to push through a named.conf rather than appending or printing
 
-cp ./masternamed.conf > /etc/masternamed.conf
+cp masternamed.conf > /etc/masternamed.conf
 echo 'include "/etc/masternamed.conf";' >> /etc/named.conf
 
 
 #now we create our zone files in /var/named/
 #Make changes to and copy over /var/named/forward.placeholder.db - forward lookup zone
-cp ./forward.placeholder.db /var/named/forward.$namezone.db
-sed 's/initials/$initials' ./forward.placeholder.db > /var/named/forward.$zonename.db
+cp forward.placeholder.db /var/named/forward.$namezone.db
+sed 's/initials/$initials' forward.placeholder.db > /var/named/forward.$zonename.db
 sed 's/clientip/$clientip' /var/named/forward.$zonename.db
 
 #Make copy over and make changes to /var/named/1.168.192.db - reverse lookup zone
-cp ./1.168.192.db /var/named/1.168.192.db
-sed 's/initials/$initials' ./1.168.192.db > /var/named/1.168.192.db
+cp 1.168.192.db /var/named/1.168.192.db
+sed 's/initials/$initials' 1.168.192.db > /var/named/1.168.192.db
 sed 's/clientip/$cip' /var/named/1.168.192.db
 sed 's/serverip/$sip' /var/named/1.168.192.db
 sed 's/defaultgateway/$defaultgateway' /var/named/1.168.192.db
