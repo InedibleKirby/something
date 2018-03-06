@@ -97,6 +97,7 @@ systemctl restart named.service
 #Test using dig command
 
 dig www.google.com
+echo "Don't forget to test DNS using client machine!"
 sleep 3
 
 echo ""
