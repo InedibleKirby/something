@@ -97,9 +97,12 @@ systemctl restart named.service
 #Test using dig command
 
 dig www.google.com
-sleep 5
-clear
+sleep 3
+
+echo ""
+echo ""
+echo ""
 
 echo "Thank you for using my script!"
-sleep 10
+sleep 7
 clear
