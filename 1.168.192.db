@@ -7,9 +7,9 @@ $TTL 1D
                                  1D )           ; Minimum
 ;
                IN      NS        nos220-centos-initials.example.local.
-clientip            IN      PTR       nos220-centos-initials.example.local.
+serverip            IN      PTR       nos220-centos-initials.example.local.
 
-serverip            IN      PTR       nos220-fedora-initials.example.local.
+clientip            IN      PTR       nos220-fedora-initials.example.local.
 
 1              IN      PTR       gateway.example.local.
 ;
