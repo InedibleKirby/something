@@ -66,7 +66,11 @@ cp /etc/named.conf /etc/named.conf.bak
 #set up a premade file to push through a named.conf rather than appending or printing
 
 cp masternamed.zones /etc/masternamed.zones
-echo 'include "/etc/masternamed.zones";' >> /etc/named.conf
+if grep -q masternamed.zones "/etc/named.conf"; then
+    echo 'include "/etc/masternamed.zones";' >> /etc/named.conf
+else
+    echo "masternamed.zones already included"
+fi
 sed -i "s/zonename/$zonename/g" /etc/masternamed.zones
 
 
