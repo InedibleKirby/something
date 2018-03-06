@@ -77,6 +77,7 @@ sleep 2
 cp -R -u -p forward.placeholder.db "/var/named/forward.$zonename.db"
 sed -i "s/initials/$initials/g" "/var/named/forward.$zonename.db"
 sed -i "s/serverip/$serverip/g" "/var/named/forward.$zonename.db"
+sed -i "s/defaultgateway/$defaultgateway/g "/var/named/forward.$zonename.db"
 
 #Make copy over and make changes to /var/named/1.168.192.db - reverse lookup zone
 echo "Copying and inserting info into 1.168.192.db"
