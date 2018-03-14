@@ -23,10 +23,12 @@ read initials
 echo "Please input your client machine IP"
 read clientip
 cip=`echo "$clientip" | sed 's/^.*\.\([^.]*\)$/\1/'`
+#The above cip variable is made by taking the last octet from the clientip variable.
 
 echo "Please input your named/bind server machine IP"
 read serverip
 sip=`echo "$serverip" | sed 's/^.*\.\([^.]*\)$/\1/'`
+#The above sip variable is made by taking the last octet from the serverip variable.
 
 echo "Please input your default gateway"
 read defaultgateway
@@ -84,6 +86,7 @@ sed -i "s/initials/$initials/g" "/var/named/forward.$zonename.db"
 sed -i "s/serverip/$serverip/g" "/var/named/forward.$zonename.db"
 sed -i "s/defaultgateway/$defaultgateway/g" "/var/named/forward.$zonename.db"
 
+
 #Make copy over and make changes to /var/named/1.168.192.db - reverse lookup zone
 echo "Copying and inserting info into 1.168.192.db"
 sleep 2
@@ -100,7 +103,7 @@ systemctl restart named.service
 
 
 
-#set nameserver in client /etc/resolv.conf
+#set nameserver in client /etc/resolv.conf or in gui
 
 #Test using dig command
 
