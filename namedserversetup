@@ -50,8 +50,6 @@ sleep 2
 read -p "Press Enter to continue"
 
 
-
-
 #Now we start with the installation and whatnot.
 echo "Beginning installation of bind and bindutils"
 sleep 3
@@ -103,9 +101,6 @@ systemctl restart named.service
 
 #set nameserver in client /etc/resolv.conf or in gui
 
-#Test using dig command
-
-dig www.google.com
 echo "Don't forget to test DNS using client machine!"
 sleep 3
 
