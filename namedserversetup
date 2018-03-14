@@ -55,15 +55,13 @@ read -p "Press Enter to continue"
 #Now we start with the installation and whatnot.
 echo "Beginning installation of bind and bindutils"
 sleep 3
-yum install bind bind-utils -y
+yum install bind bind-utils -y > /dev/null
 
 echo "Starting, enabling, and checking status of process"
 sleep 3
 #Start and enable named services using systemctl
 systemctl start named
 systemctl enable named
-#Status to make sure we're up and running
-systemctl status named
 
 
 #vi /etc/named.conf setup
