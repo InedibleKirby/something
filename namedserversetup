@@ -7,6 +7,8 @@ echo "WARNING: DO NOT RUN THIS SCRIPT WITHOUT A VALID STATIC IP SET"
 echo ""
 sleep 1
 echo "Please ensure that you are a sudoer or root user before continuing! (CTRL+C to exit)"
+echo "If the directory printed below does NOT end with (masterscriptdirectoryname), please CTRL+C and cd to the directory containing all script files."
+pwd
 sleep 1
 read -p "Press Enter to continue"
 
