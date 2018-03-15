@@ -1,4 +1,6 @@
 #!/bin/bash
+#Created by Andrew Stillman
+
 #This will be a basic markup of a named/bind server setup on a system
 #I may create a version of this to be a slave as well, tbd
 
