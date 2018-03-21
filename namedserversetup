@@ -1,0 +1,115 @@
+#!/bin/bash
+#Created by Andrew Stillman
+
+#This will be a basic markup of a named/bind server setup on a system
+#I may create a version of this to be a slave as well, tbd
+
+clear
+echo "WARNING: DO NOT RUN THIS SCRIPT WITHOUT A VALID STATIC IP SET"
+echo ""
+sleep 1
+echo "Please ensure that you are a sudoer or root user before continuing! (CTRL+C to exit)"
+echo ""
+echo "If the directory printed below does NOT end with (masterscriptdirectoryname) or the following ls does not contain all script files, please CTRL+C and cd to the directory containing all script files."
+pwd
+ls
+sleep 1
+echo ""
+read -p "Press Enter to continue"
+
+#Ask for variables here
+
+echo "Please input your first and last initials"
+read initials
+
+echo "Please input your client machine IP"
+read clientip
+cip=`echo "$clientip" | sed 's/^.*\.\([^.]*\)$/\1/'`
+#The above cip variable is made by taking the last octet from the clientip variable.
+
+echo "Please input your named/bind server machine IP"
+read serverip
+sip=`echo "$serverip" | sed 's/^.*\.\([^.]*\)$/\1/'`
+#The above sip variable is made by taking the last octet from the serverip variable.
+
+echo "Please input your default gateway"
+read defaultgateway
+
+echo "Please input your desired zone name"
+read zonename
+
+clear
+
+echo "You have entered the following information:"
+echo "Initials are: $initials"
+echo "Client IP is: $clientip"
+echo "Server IP is: $serverip"
+echo "Default gateway is $defaultgateway"
+echo "Zone name is: $zonename"
+echo ""
+echo "If everything above is correct, press Enter. If not, CTRL+C out and start the script again"
+sleep 2
+read -p "Press Enter to continue"
+
+
+#Now we start with the installation and whatnot.
+echo "Beginning installation of bind and bindutils"
+sleep 3
+yum install bind bind-utils -y > /dev/null
+
+echo "Starting, enabling, and checking status of process"
+sleep 3
+#Start and enable named services using systemctl
+systemctl start named
+systemctl enable named
+
+
+#vi /etc/named.conf setup
+#Copy original
+cp /etc/named.conf /etc/named.conf.bak
+
+#set up a premade file to push through a named.conf rather than appending or printing
+
+cp masternamed.zones /etc/masternamed.zones
+grep -q masternamed /etc/named.conf || echo 'include "/etc/masternamed.zones";' >> /etc/named.conf
+sed -i "s/zonename/$zonename/g" /etc/masternamed.zones
+
+
+#now we create our zone files in /var/named/
+#Make changes to and copy over /var/named/forward.placeholder.db - forward lookup zone
+echo "Copying and inserting info into forward.$zonename.db"
+sleep 2
+cp -R -u -p forward.placeholder.db "/var/named/forward.$zonename.db"
+sed -i "s/initials/$initials/g" "/var/named/forward.$zonename.db"
+sed -i "s/serverip/$serverip/g" "/var/named/forward.$zonename.db"
+sed -i "s/defaultgateway/$defaultgateway/g" "/var/named/forward.$zonename.db"
+
+
+#Make copy over and make changes to /var/named/1.168.192.db - reverse lookup zone
+echo "Copying and inserting info into 1.168.192.db"
+sleep 2
+cp -R -u -p 1.168.192.db /var/named/1.168.192.db
+sed -i "s/initials/$initials/g" /var/named/1.168.192.db
+sed -i "s/clientip/$cip/g" /var/named/1.168.192.db
+sed -i "s/serverip/$sip/g" /var/named/1.168.192.db
+sed -i "s/defaultgateway/$defaultgateway/g" /var/named/1.168.192.db
+
+
+
+#now we restart bind server
+systemctl restart named.service
+
+
+
+#set nameserver in client /etc/resolv.conf or in gui
+
+echo "Don't forget to test DNS using client machine!"
+sleep 3
+
+echo ""
+echo ""
+echo ""
+
+echo "Thank you for using my script!"
+sleep 7
+clear

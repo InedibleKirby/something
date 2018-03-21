@@ -1,0 +1,11 @@
+zone "zonename.local" IN {
+    type master;
+    file "forward.zonename.db";
+    allow-update { none; };
+};
+
+zone "1.168.192.in-addr.arpa" IN {
+    type master;
+    file "1.168.192.db";
+    allow-update { none; };
+};
